@@ -256,7 +256,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D83832AD2D67B9D0003FB9F8 /* ReleaseDeveloper.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "autofill-extension/autofill_extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "autofill-extension/autofill_extension_enabled.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -409,7 +409,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D83832AB2D67B9AE003FB9F8 /* Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "autofill-extension/autofill_extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "autofill-extension/autofill_extension_enabled.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -430,6 +430,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bitwarden.desktop.autofill-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Bitwarden Desktop Autofill Development 2024";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Bitwarden Desktop Autofill Development 2024";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
