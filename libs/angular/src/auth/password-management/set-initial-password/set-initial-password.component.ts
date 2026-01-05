@@ -42,7 +42,7 @@ import {
   SetInitialPasswordCredentials,
   SetInitialPasswordCredentialsOld,
   SetInitialPasswordService,
-  SetInitialPasswordTdeOffboardingCredentials,
+  SetInitialPasswordTdeOffboardingCredentialsOld,
   SetInitialPasswordUserType,
 } from "./set-initial-password.service.abstraction";
 
@@ -206,7 +206,14 @@ export class SetInitialPasswordComponent implements OnInit {
 
         break;
       case SetInitialPasswordUserType.OFFBOARDED_TDE_ORG_USER:
-        await this.setInitialPasswordTdeOffboarding(passwordInputResult);
+        // Remove wrapping "if" check and early return in PM-28143
+        if (passwordInputResult.newApisFlagEnabled) {
+          // ...
+          return;
+        }
+
+        await this.setInitialPasswordTdeOffboardingOld(passwordInputResult); // remove in PM-28143
+
         break;
       default:
         this.logService.error(
@@ -307,7 +314,10 @@ export class SetInitialPasswordComponent implements OnInit {
     }
   }
 
-  private async setInitialPasswordTdeOffboarding(passwordInputResult: PasswordInputResult) {
+  /**
+   * @deprecated To be removed in PM-28143
+   */
+  private async setInitialPasswordTdeOffboardingOld(passwordInputResult: PasswordInputResult) {
     const ctx = "Could not set initial password.";
     assertTruthy(passwordInputResult.newMasterKey, "newMasterKey", ctx);
     assertTruthy(passwordInputResult.newServerMasterKeyHash, "newServerMasterKeyHash", ctx);
@@ -315,13 +325,13 @@ export class SetInitialPasswordComponent implements OnInit {
     assertNonNullish(passwordInputResult.newPasswordHint, "newPasswordHint", ctx); // can have an empty string as a valid value, so check non-nullish
 
     try {
-      const credentials: SetInitialPasswordTdeOffboardingCredentials = {
+      const credentials: SetInitialPasswordTdeOffboardingCredentialsOld = {
         newMasterKey: passwordInputResult.newMasterKey,
         newServerMasterKeyHash: passwordInputResult.newServerMasterKeyHash,
         newPasswordHint: passwordInputResult.newPasswordHint,
       };
 
-      await this.setInitialPasswordService.setInitialPasswordTdeOffboarding(
+      await this.setInitialPasswordService.setInitialPasswordTdeOffboardingOld(
         credentials,
         this.userId,
       );

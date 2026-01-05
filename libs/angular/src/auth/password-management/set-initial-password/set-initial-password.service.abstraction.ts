@@ -68,7 +68,10 @@ export interface SetInitialPasswordCredentials {
   resetPasswordAutoEnroll: boolean;
 }
 
-export interface SetInitialPasswordTdeOffboardingCredentials {
+/**
+ * @deprecated To be removed in PM-28143
+ */
+export interface SetInitialPasswordTdeOffboardingCredentialsOld {
   newMasterKey: MasterKey;
   newServerMasterKeyHash: string;
   newPasswordHint: string;
@@ -99,6 +102,8 @@ export abstract class SetInitialPasswordService {
   ) => Promise<void>;
 
   /**
+   * @deprecated To be removed in PM-28143
+   *
    * Sets an initial password for a user who logs in after their org offboarded from
    * trusted device encryption and is now a master-password-encryption org:
    * - {@link SetInitialPasswordUserType.OFFBOARDED_TDE_ORG_USER}
@@ -106,8 +111,8 @@ export abstract class SetInitialPasswordService {
    * @param passwordInputResult credentials object received from the `InputPasswordComponent`
    * @param userId the account `userId`
    */
-  abstract setInitialPasswordTdeOffboarding: (
-    credentials: SetInitialPasswordTdeOffboardingCredentials,
+  abstract setInitialPasswordTdeOffboardingOld: (
+    credentials: SetInitialPasswordTdeOffboardingCredentialsOld,
     userId: UserId,
   ) => Promise<void>;
 
