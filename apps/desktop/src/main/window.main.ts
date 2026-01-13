@@ -557,8 +557,8 @@ export class WindowMain {
 }
 
 export type WindowDetails = {
-  isVisible: boolean,
-  isFocused: boolean,
+  isVisible: boolean;
+  isFocused: boolean;
   // Base64-encoded native handle
-  handle: Buffer,
-}
+  handle: Buffer;
+};
