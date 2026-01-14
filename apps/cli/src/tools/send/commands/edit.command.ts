@@ -9,6 +9,7 @@ import { SendType } from "@bitwarden/common/tools/send/enums/send-type";
 import { AuthType } from "@bitwarden/common/tools/send/models/domain/send";
 import { SendApiService } from "@bitwarden/common/tools/send/services/send-api.service.abstraction";
 import { SendService } from "@bitwarden/common/tools/send/services/send.service.abstraction";
+import { SendType } from "@bitwarden/common/tools/send/types/send-type";
 
 import { Response } from "../../../models/response";
 import { CliUtils } from "../../../utils";

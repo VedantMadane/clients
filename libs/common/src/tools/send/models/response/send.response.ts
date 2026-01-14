@@ -3,7 +3,7 @@
 import { AuthType } from "@bitwarden/common/tools/send/models/domain/send";
 
 import { BaseResponse } from "../../../../models/response/base.response";
-import { SendType } from "../../enums/send-type";
+import { SendType } from "../../types/send-type";
 import { SendFileApi } from "../api/send-file.api";
 import { SendTextApi } from "../api/send-text.api";
 
